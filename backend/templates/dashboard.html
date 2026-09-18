@@ -1,0 +1,48 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0e131f">
+  <title>Hogar · Finanzas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'dashboard.css' %}">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Inicio de Hogar"><span class="brand-mark">H</span><span><small>FINANZAS FLUID</small><strong>Mi hogar</strong></span></a>
+    <div class="top-actions"><button class="icon-button" aria-label="Notificaciones"><span class="material-symbols-outlined">notifications</span><i></i></button><button class="avatar" aria-label="Perfil">G</button></div>
+  </header>
+
+  <main class="page">
+    <section class="page-heading">
+      <div class="heading-actions"><button class="icon-button" aria-label="Volver"><span class="material-symbols-outlined">arrow_back</span></button><button class="month-button" id="monthButton"><span class="material-symbols-outlined">calendar_month</span><span id="monthLabel">Septiembre 2026</span><span class="material-symbols-outlined">expand_more</span></button><button class="icon-button" aria-label="Filtros"><span class="material-symbols-outlined">tune</span></button></div>
+      <div class="title-line"><div><small>GESTIÓN DEL HOGAR</small><h1>Comida &amp; Despensa</h1></div><div class="switcher"><button>Sem</button><button class="active">Mes</button></div></div>
+    </section>
+
+    <section class="budget-card panel">
+      <div class="liquid one"></div><div class="liquid two"></div>
+      <div class="budget-top"><div><p class="eyebrow"><b></b>Presupuesto mensual</p><div class="amount"><span id="spent">540,20</span><em>€</em></div><p class="muted">de <strong>750,00 €</strong> asignados</p></div><div class="budget-state"><span id="percentBadge"><span class="material-symbols-outlined">trending_up</span>72% usado</span><small id="remaining">Resta 209,80 €</small></div></div>
+      <div class="meter"><div class="track"><i id="progress" style="width:72%"></i></div><div><small>Día 18 de 30</small><small class="positive">Ritmo óptimo</small></div></div>
+      <div class="mini-cards"><article><span class="material-symbols-outlined cyan">shopping_cart</span><small>Super</small><strong>380,50 €</strong><em>70,4%</em></article><article><span class="material-symbols-outlined green">delivery_dining</span><small>Delivery</small><strong>115,20 €</strong><em>21,3%</em></article><article><span class="material-symbols-outlined pink">bakery_dining</span><small>Barrio</small><strong>44,50 €</strong><em>8,3%</em></article></div>
+    </section>
+
+    <section class="rhythm panel"><div class="ring"><svg viewBox="0 0 36 36"><path class="ring-bg" d="M18 2.1a15.9 15.9 0 1 1 0 31.8A15.9 15.9 0 0 1 18 2.1"/><path class="ring-value" d="M18 2.1a15.9 15.9 0 1 1 0 31.8A15.9 15.9 0 0 1 18 2.1"/></svg><span class="material-symbols-outlined">local_fire_department</span></div><div class="rhythm-copy"><small>CONSUMO DIARIO PROMEDIO</small><strong>17,40 € <em>/ día</em></strong><p><span class="material-symbols-outlined">check_circle</span>Dentro de meta (Máx. 24,00 €)</p></div><button class="icon-button" aria-label="Ver análisis"><span class="material-symbols-outlined">insights</span></button></section>
+
+    <section class="section"><div class="section-title"><h2><span class="material-symbols-outlined cyan">format_list_bulleted</span>Lista de compras &amp; despensa</h2><span class="counter" id="pendingCount">2 pendientes</span></div><div class="checklist panel" id="checklist"><label class="grocery"><input type="checkbox"><span class="check"><span class="material-symbols-outlined">check</span></span><span class="grocery-copy"><strong>Leche desnatada y huevos camperos</strong><small>Mercadona · Prioridad media</small></span><em>Pendiente</em></label><label class="grocery"><input type="checkbox"><span class="check"><span class="material-symbols-outlined">check</span></span><span class="grocery-copy"><strong>Aguacates, plátanos y espinacas</strong><small>Frutería Gómez · Frescos</small></span><em>Pendiente</em></label><label class="grocery completed"><input type="checkbox" checked><span class="check"><span class="material-symbols-outlined">check</span></span><span class="grocery-copy"><strong>Aceite de oliva virgen extra 1L</strong><small>Comprado ayer · 9,80 €</small></span><span class="material-symbols-outlined receipt">receipt</span></label><button class="add-item" id="addItem"><span class="material-symbols-outlined">add_circle</span>Añadir ítem a la lista</button></div></section>
+
+    <section class="section"><div class="section-title"><h2><span class="material-symbols-outlined green">receipt_long</span>Tickets y compras recientes</h2><a href="/api/v1/transactions/">Ver todos</a></div><div class="expenses" id="expenses"><article class="expense panel"><span class="expense-icon cyan"><span class="material-symbols-outlined">storefront</span></span><div><strong>Carrefour Market</strong><small>Ayer, 18:30 · 14 productos</small><em>Ticket escaneado #CRF-982</em></div><aside><b>-142,30 €</b><small>Alimentación</small></aside></article><article class="expense panel"><span class="expense-icon green"><span class="material-symbols-outlined">nutrition</span></span><div><strong>Hnos. Gómez Carnicería</strong><small>Hace 3 días · Pechugas &amp; ternera</small><em class="green-text">Comercio de proximidad</em></div><aside><b>-38,40 €</b><small>Fresco</small></aside></article><article class="expense panel"><span class="expense-icon pink"><span class="material-symbols-outlined">ramen_dining</span></span><div><strong>Glovo / Tokyo Sushi House</strong><small>Fin de semana · Cena compartida</small><em>Ocio / Delivery</em></div><aside><b>-34,50 €</b><small>Cenas</small></aside></article></div></section>
+    <button class="fab" id="openExpense"><span class="material-symbols-outlined">add_a_photo</span><span>Escanear ticket / añadir gasto</span></button>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Navegación principal"><a href="#"><span class="material-symbols-outlined">receipt_long</span>Servicios</a><a href="#"><span class="material-symbols-outlined">account_balance</span>Impuestos</a><a href="/" class="home"><span class="material-symbols-outlined">dashboard</span>Inicio</a><a href="/salidas/"><span class="material-symbols-outlined">payments</span>Salidas</a><a href="#" class="selected"><span class="material-symbols-outlined">restaurant</span>Comida</a></nav>
+
+  <dialog id="expenseDialog"><form method="dialog" id="expenseForm"><button class="close" value="cancel" aria-label="Cerrar">×</button><h2>Añadir gasto</h2><p>Guarda un gasto rápido en tu historial.</p><label>Concepto<input name="concept" required placeholder="Ej. Compra Mercadona"></label><label>Importe (€)<input name="amount" required inputmode="decimal" type="number" min="0.01" step="0.01" placeholder="0,00"></label><label>Categoría<select name="category"><option>Alimentación</option><option>Ocio</option><option>Transporte</option><option>Otros</option></select></label><button class="submit" value="default">Guardar gasto</button></form></dialog>
+  <script src="{% static 'dashboard.js' %}"></script>
+</body>
+</html>

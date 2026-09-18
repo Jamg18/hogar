@@ -1,0 +1,20 @@
+# API y dominio
+Django>=6.0,<6.1
+djangorestframework>=3.17,<3.18
+
+# Persistencia PostgreSQL (Psycopg 3)
+psycopg[binary,pool]>=3.3,<3.4
+
+# Configuración y seguridad HTTP
+django-environ>=0.12,<0.13
+django-cors-headers>=4.7,<5.0
+djangorestframework-simplejwt>=5.5,<6.0
+
+# Contrato OpenAPI / Swagger
+drf-spectacular>=0.30,<0.31
+
+# Calidad y pruebas
+pytest>=8.3,<9.0
+pytest-django>=4.9,<5.0
+pytest-cov>=6.0,<7.0
+ruff>=0.11,<0.12

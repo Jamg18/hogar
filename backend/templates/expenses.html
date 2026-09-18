@@ -1,0 +1,25 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"><meta name="theme-color" content="#0e131f">
+  <title>Hogar · Salidas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'dashboard.css' %}">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <header class="topbar"><a class="brand" href="/"><span class="brand-mark">H</span><span><small>FINANZAS FLUID</small><strong>Mi hogar</strong></span></a><div class="top-actions"><button class="icon-button" aria-label="Notificaciones"><span class="material-symbols-outlined">notifications</span><i></i></button><button class="avatar" aria-label="Perfil">G</button></div></header>
+  <main class="page expenses-page">
+    <section class="page-heading"><div class="heading-actions"><a class="icon-button link-button" href="/" aria-label="Volver"><span class="material-symbols-outlined">arrow_back</span></a><button class="month-button"><span class="material-symbols-outlined">calendar_month</span><span id="periodName">Septiembre 2026</span><span class="material-symbols-outlined">expand_more</span></button><button class="icon-button" id="filterButton" aria-label="Filtros"><span class="material-symbols-outlined">tune</span></button></div><div class="title-line"><div><small>MOVIMIENTOS DEL HOGAR</small><h1>Salidas</h1></div><button class="new-expense" id="openExpense"><span class="material-symbols-outlined">add</span>Nueva salida</button></div></section>
+    <section class="expense-summary panel"><div><small>GASTOS DEL MES</small><strong id="monthTotal">0,00 €</strong><p id="transactionCount">0 movimientos</p></div><div class="summary-icon"><span class="material-symbols-outlined">payments</span></div></section>
+    <section class="filter-row" id="filters" hidden><button data-filter="all" class="active">Todas</button><button data-filter="Alimentación">Alimentación</button><button data-filter="Transporte">Transporte</button><button data-filter="Ocio">Ocio</button><button data-filter="Otros">Otros</button></section>
+    <section class="section"><div class="section-title"><h2><span class="material-symbols-outlined cyan">receipt_long</span>Historial reciente</h2><button class="text-button" id="clearAll">Vaciar demo</button></div><div class="expense-list" id="expenseList" aria-live="polite"></div><p class="empty-state" id="emptyState" hidden><span class="material-symbols-outlined">receipt_long</span>Aún no hay salidas.<br>Registra la primera para comenzar.</p></section>
+  </main>
+  <nav class="bottom-nav" aria-label="Navegación principal"><a href="#"><span class="material-symbols-outlined">receipt_long</span>Servicios</a><a href="#"><span class="material-symbols-outlined">account_balance</span>Impuestos</a><a href="/"><span class="material-symbols-outlined">dashboard</span>Inicio</a><a href="/salidas/" class="selected"><span class="material-symbols-outlined">payments</span>Salidas</a><a href="#"><span class="material-symbols-outlined">restaurant</span>Comida</a></nav>
+  <dialog id="expenseDialog"><form id="expenseForm"><button class="close" type="button" id="closeDialog" aria-label="Cerrar">×</button><h2>Nueva salida</h2><p>Se guarda en este dispositivo mientras conectamos tu cuenta.</p><label>Concepto<input name="concept" required maxlength="100" placeholder="Ej. Compra en Mercadona"></label><label>Importe (€)<input name="amount" required inputmode="decimal" type="number" min="0.01" step="0.01" placeholder="0,00"></label><label>Categoría<select name="category"><option>Alimentación</option><option>Transporte</option><option>Vivienda</option><option>Salud</option><option>Ocio</option><option>Otros</option></select></label><label>Fecha<input name="date" required type="date"></label><button class="submit" type="submit">Guardar salida</button></form></dialog>
+  <script src="{% static 'expenses.js' %}"></script>
+</body>
+</html>
